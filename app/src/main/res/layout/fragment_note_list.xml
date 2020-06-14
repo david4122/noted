@@ -8,7 +8,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".NoteListFragment"
+    tools:context=".ui.notelist.NoteListFragment"
     tools:listitem="@layout/fragment_note_item" >
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".NoteListFragment"
+        tools:context=".ui.notelist.NoteListFragment"
         tools:listitem="@layout/fragment_note_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

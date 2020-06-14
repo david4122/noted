@@ -1,24 +1,23 @@
-package org.noted
+package org.noted.ui.notelist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import org.noted.dummy.DummyContent
+import org.noted.R
+import org.noted.ui.note.NoteViewModel
 
 class NoteListFragment : Fragment() {
 
-    private lateinit var viewModel: NoteListViewModel
+    private val viewModel: NoteViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +27,12 @@ class NoteListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(NoteListViewModel::class.java)
-
         val view = inflater.inflate(R.layout.fragment_note_list, container, false)
 
         // Set the adapter
         with(view.findViewById<RecyclerView>(R.id.note_list)) {
             layoutManager = LinearLayoutManager(context)
-            adapter = NoteRecyclerViewAdapter(viewModel.notes)
+            adapter = NoteRecyclerViewAdapter(viewModel.notes, viewModel)
 
             viewModel.notes.observe(viewLifecycleOwner, Observer { this@with.adapter?.notifyDataSetChanged() })
         }

@@ -22,14 +22,14 @@ class FirestoreNoteRepository: NoteRepository {
         return FirestoreNoteLiveData(firestore.collection(collectionName).document(id))
     }
 
-    override fun getNotes(): LiveData<List<Note>> {
-        val notes = MutableLiveData<List<Note>>()
+    override fun getNotes(): LiveData<List<MutableLiveData<Note>>> {
+        val notes = MutableLiveData<List<MutableLiveData<Note>>>()
         firestore.collection(collectionName).get().addOnSuccessListener { docs ->
             notes.value = docs.map {
-                Note().apply {
+                FirestoreNoteLiveData(it.reference, Note().apply {
                     id = it.id
                     content = it.getString("content")!!
-                }
+                })
             }
         }
         return notes

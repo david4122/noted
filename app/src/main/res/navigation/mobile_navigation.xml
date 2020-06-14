@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/noteListFragment"
-        android:name="org.noted.NoteListFragment"
+        android:name="org.noted.ui.notelist.NoteListFragment"
         android:label="fragment_note_list"
         tools:layout="@layout/fragment_note_list" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/noteFragment"
-        android:name="org.noted.NoteFragment"
+        android:name="org.noted.ui.note.NoteFragment"
         android:label="fragment_note"
         tools:layout="@layout/fragment_note" />
 

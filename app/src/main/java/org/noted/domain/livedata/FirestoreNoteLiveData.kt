@@ -1,16 +1,20 @@
 package org.noted.domain.livedata
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.google.firebase.firestore.*
 import org.noted.domain.model.Note
 
-class FirestoreNoteLiveData: LiveData<Note>, EventListener<DocumentSnapshot> {
+class FirestoreNoteLiveData: MutableLiveData<Note>, EventListener<DocumentSnapshot>,
+    Observer<Note> {
 
     private var listenerReg: ListenerRegistration? = null
 
-    private lateinit var docRef: DocumentReference
+    private var docRef: DocumentReference
 
     constructor(docRef: DocumentReference) {
+        this.docRef = docRef
         docRef.get().addOnSuccessListener {
             value = it.toObject(Note::class.java)
         }
@@ -19,6 +23,8 @@ class FirestoreNoteLiveData: LiveData<Note>, EventListener<DocumentSnapshot> {
     constructor(docRef: DocumentReference, value: Note) {
         this.docRef = docRef
         this.value = value
+
+        observeForever(this)
     }
 
     override fun onActive() {
@@ -39,8 +45,13 @@ class FirestoreNoteLiveData: LiveData<Note>, EventListener<DocumentSnapshot> {
             )
 
             value = model
+
         } else {
             TODO("Handle error")
         }
+    }
+
+    override fun onChanged(n: Note?) {
+        if(n != null) docRef.set(n)
     }
 }
