@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/noteListFragment">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="org.noted.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="org.noted.NoteListFragment"
+        android:label="fragment_note_list"
+        tools:layout="@layout/fragment_note_list" >
+        <action
+            android:id="@+id/action_noteListFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="org.noted.NoteFragment"
+        android:label="fragment_note"
+        tools:layout="@layout/fragment_note" />
+
+</navigation>
