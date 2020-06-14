@@ -9,7 +9,8 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ui.notelist.NoteListFragment"
-    tools:listitem="@layout/fragment_note_item" >
+    tools:listitem="@layout/fragment_note_item"
+    android:label="My Notes" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/note_list"

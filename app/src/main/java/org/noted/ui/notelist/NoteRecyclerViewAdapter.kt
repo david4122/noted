@@ -7,14 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
-import kotlinx.android.synthetic.main.fragment_note_item.view.*
 import org.noted.R
 import org.noted.domain.model.Note
 
-import org.noted.dummy.DummyContent.DummyItem
 import org.noted.ui.note.NoteViewModel
 
 class NoteRecyclerViewAdapter(
