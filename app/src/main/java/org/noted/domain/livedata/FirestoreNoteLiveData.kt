@@ -18,6 +18,8 @@ class FirestoreNoteLiveData: MutableLiveData<Note>, EventListener<DocumentSnapsh
         docRef.get().addOnSuccessListener {
             value = it.toObject(Note::class.java)
         }
+
+        observeForever(this)
     }
 
     constructor(docRef: DocumentReference, value: Note) {
@@ -46,8 +48,11 @@ class FirestoreNoteLiveData: MutableLiveData<Note>, EventListener<DocumentSnapsh
 
             value = model
 
+        } else if(ex != null) {
+            throw ex
         } else {
-            TODO("Handle error")
+            listenerReg?.remove()
+            removeObserver(this)
         }
     }
 

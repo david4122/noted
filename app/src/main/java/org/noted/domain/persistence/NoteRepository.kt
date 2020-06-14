@@ -6,7 +6,7 @@ import org.noted.domain.model.Note
 
 interface NoteRepository {
 
-    fun addNote(note: Note)
+    fun addNote(note: Note): LiveData<Note>
 
     fun getNote(id: String): LiveData<Note>
 

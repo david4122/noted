@@ -27,7 +27,11 @@ class NoteFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.root.findViewById<Button>(R.id.cancel).setOnClickListener { binding.root.findNavController().popBackStack() }
-        binding.root.findViewById<Button>(R.id.save).setOnClickListener { viewModel.save() }
+        binding.root.findViewById<Button>(R.id.save).setOnClickListener {
+            viewModel.save()
+            viewModel.select(null)
+            binding.root.findNavController().popBackStack()
+        }
 
         return binding.root
     }
