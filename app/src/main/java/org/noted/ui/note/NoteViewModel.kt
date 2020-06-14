@@ -43,7 +43,7 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
     fun save() {
         if(currentNote?.value == null) {
-            val new = repo.addNote(Note(noteContent.value!!))
+            repo.addNote(Note(noteContent.value!!))
         } else {
             _currentNote!!.value = Note(_currentNote!!.value!!.id!!, noteContent.value!!)
         }

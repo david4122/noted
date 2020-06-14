@@ -8,7 +8,7 @@
             name="viewModel"
             type="org.noted.ui.note.NoteViewModel" />
     </data>
-    
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_marginBottom="16dp"
             android:text="@android:string/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/save"
+            app:layout_constraintEnd_toStartOf="@+id/share"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -31,38 +31,41 @@
             android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:text="@android:string/ok"
+            android:text="@string/save_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cancel" />
+            app:layout_constraintStart_toEndOf="@+id/share" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="184dp"
-            android:layout_marginBottom="256dp"
-            android:text="Share" />
+            android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/share_button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/save"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cancel" />
 
         <EditText
             android:id="@+id/noteContent"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
             android:autofillHints="no"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
             android:text="@={viewModel.noteContent}"
-            app:layout_constraintBottom_toTopOf="@+id/cancel"
+            app:layout_constraintBottom_toTopOf="@+id/share"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

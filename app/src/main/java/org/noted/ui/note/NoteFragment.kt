@@ -1,6 +1,7 @@
 package org.noted.ui.note
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,6 +32,15 @@ class NoteFragment : Fragment() {
             viewModel.save()
             viewModel.select(null)
             binding.root.findNavController().popBackStack()
+        }
+        binding.root.findViewById<Button>(R.id.share).setOnClickListener {
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, viewModel.noteContent.value)
+                type = "text/plain"
+            }
+
+            startActivity(intent)
         }
 
         return binding.root
